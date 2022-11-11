@@ -102,7 +102,13 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     }
                     string moduleName = Path.GetFileName(directory);
 
-                    var UXMetadataPathList = Directory.EnumerateFiles(Path.Combine(directory, "UX"), "*.json", SearchOption.AllDirectories);
+                    string UXFolder = Path.Combine(directory, "UX");
+                    if (!Directory.Exists(UXFolder))
+                    {
+                        continue;
+                    }
+
+                    var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
                     foreach (var UXMetadataPath in UXMetadataPathList)
                     {
                         ValidateUXMetadata(moduleName, UXMetadataPath, issueLogger);

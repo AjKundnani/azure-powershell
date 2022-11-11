@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.1.1
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
+
 ## Version 6.1.0
 * Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping

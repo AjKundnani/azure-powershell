@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(dest => dest.PreTask, opt => opt.MapFrom(src => src.InstallPatches.PreTasks))
                     .ForMember(dest => dest.PostTask, opt => opt.MapFrom(src => src.InstallPatches.PostTasks))
                     .ForMember(dest => dest.InstallPatchRebootSetting, opt => opt.MapFrom(src => src.InstallPatches.RebootSetting))
-                    .ForSourceMember(src => src.SystemData, s => s.Ignore())
-                    .ForSourceMember(src => src.InstallPatches, s => s.Ignore())
+                    .ForSourceMember(src => src.SystemData, s => s.DoNotValidate())
+                    .ForSourceMember(src => src.InstallPatches, s => s.DoNotValidate())
                                         .ForPath(dst => dst.PostTask, s => s.Ignore())
                     .ForPath(dst => dst.PreTask, s => s.Ignore())
                     .AfterMap((src, dst) => {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(dest => dest.SystemData, s => s.Ignore());
                 cfg.CreateMap<FROM.Update, TO.PSUpdate>();
                 cfg.CreateMap<TO.PSUpdate, FROM.Update>();
-
+                cfg.ShouldMapMethod = _ => false;
             });
             _mapper = config.CreateMapper();
             config.AssertConfigurationIsValid();

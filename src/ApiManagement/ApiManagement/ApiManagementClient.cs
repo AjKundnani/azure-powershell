@@ -53,8 +53,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 {
                     if (_mapper == null)
                     {
-                        var config = new MapperConfiguration(cfg => { });
-
+                        var config = new MapperConfiguration(cfg => {
+                            cfg.ShouldMapMethod = _ => false;
+                        });
                         _mapper = config.CreateMapper();
                     }
 

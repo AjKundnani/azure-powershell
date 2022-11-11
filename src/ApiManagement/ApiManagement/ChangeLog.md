@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.1
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
+
 ## Version 4.0.0
 * [Breaking Change] Changed the type of parameter `Sku` from Enum to String in `Add-AzApiManagementRegion`, `New-AzApiManagement` and `Update-AzApiManagementRegion`.
 

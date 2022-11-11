@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.2.1
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
+
 ## Version 1.2.0
 * Added Guest patch maintenance support.
 

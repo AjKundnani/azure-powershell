@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.2.0
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
 
 ## Version 5.1.0

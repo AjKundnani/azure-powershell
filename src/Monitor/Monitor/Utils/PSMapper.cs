@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.Utils
                 cfg.CreateMap<PrivateEndpointConnection, PSPrivateEndpointConnection>().ReverseMap();
                 cfg.CreateMap<PrivateEndpointProperty, PSPrivateEndpointProperty>().ReverseMap();
                 cfg.CreateMap<PrivateLinkServiceConnectionStateProperty, PSPrivateLinkServiceConnectionStateProperty>().ReverseMap();
+                cfg.ShouldMapMethod = _ => false;
             });
             _instance = config.CreateMapper();
         }

@@ -1074,6 +1074,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     .Headers.GetValues("Azure-AsyncOperation")
                                     .FirstOrDefault()
                                 : string.Empty));
+                cfg.ShouldMapMethod = _ => false;
             });
 
             _mapper = config.CreateMapper();

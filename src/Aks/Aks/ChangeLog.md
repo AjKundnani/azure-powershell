@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.1.0
 * Bumped API version to 2022-09-01
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
 
 ## Version 5.0.0
 * [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.

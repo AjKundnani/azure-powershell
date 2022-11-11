@@ -188,6 +188,7 @@ namespace Microsoft.Azure.Commands.Compute
                 // PSVmssDiskEncryptionStatusContext <=> PSVmssDiskEncryptionStatusContextList
                 cfg.CreateMap<TO.PSVmssDiskEncryptionStatusContext, TO.PSVmssDiskEncryptionStatusContextList>();
                 cfg.CreateMap<TO.PSVmssVMDiskEncryptionStatusContext, TO.PSVmssVMDiskEncryptionStatusContextList>();
+                cfg.ShouldMapMethod = _ => false;
             });
 
             _mapper = config.CreateMapper();

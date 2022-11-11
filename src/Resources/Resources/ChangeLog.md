@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.4.1
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
+
 ## Version 6.4.0
 * Fixed parameter `Count` for
     - Get-AzADApplication

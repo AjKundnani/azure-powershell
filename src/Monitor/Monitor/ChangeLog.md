@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed bug for `New-AzActivityLogAlert` and `Update-AzActivityLogAlert` [#19927]
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
 
 ## Version 4.2.0
 * [Breaking Change] Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01, affected cmdlets:

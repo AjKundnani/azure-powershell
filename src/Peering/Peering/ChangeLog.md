@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
 
 ## Version 0.3.0
 * Added support for cdn peering prefixes

@@ -128,6 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<CNM.PSPeering, CNM.PSExchangePeeringModelView>();
                         cfg.CreateMap<CNM.PSDirectPeeringModelView, CNM.PSPeering>();
                         cfg.CreateMap<CNM.PSExchangePeeringModelView, CNM.PSPeering>();
+                        cfg.ShouldMapMethod = _ => false;
                     });
             mapper = config.CreateMapper();
         }

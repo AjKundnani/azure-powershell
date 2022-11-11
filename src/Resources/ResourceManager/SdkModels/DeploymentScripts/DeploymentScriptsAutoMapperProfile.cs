@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<ScriptStatus, PsScriptStatus>();              
+                cfg.CreateMap<ScriptStatus, PsScriptStatus>();
+                cfg.ShouldMapMethod = _ => false;
             });
 
             _mapper = config.CreateMapper();

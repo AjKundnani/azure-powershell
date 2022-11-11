@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded AutoMapper to 8.1.1 and disabled method mapping [#18721]
 
 ## Version 5.1.1
 * Fixed bug with New-AzCustomIpPrefix

@@ -38,17 +38,17 @@ namespace StaticAnalysis.UXMetadataAnalyzer
     {
         public AnalysisLogger Logger { get; set; }
         public string Name { get; set; }
-        public string BreakingChangeIssueReportLoggerName { get; set; }
+        public string UXMetadataIssueReportLoggerName { get; set; }
 
 // TODO: Remove IfDef code
 #if !NETSTANDARD
         private AppDomain _appDomain;
 #endif
 
-        public BreakingChangeAnalyzer()
+        public UXMetadataAnalyzer()
         {
             Name = "Breaking Change Analyzer";
-            BreakingChangeIssueReportLoggerName = "BreakingChangeIssues.csv";
+            UXMetadataIssueReportLoggerName = "BreakingChangeIssues.csv";
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             IEnumerable<string> modulesToAnalyze)
         {
             var processedHelpFiles = new List<string>();
-            var issueLogger = Logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
+            var issueLogger = Logger.CreateLogger<UXMetadataIssue>("UXMetadataIssues.csv");
 
             if (directoryFilter != null)
             {
@@ -164,36 +164,6 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     {
                         continue;
                     }
-
-                    var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
-
-                    if (cmdletFilter != null)
-                    {
-                        var output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                        output += string.Format("\nCmdlet file: {0}", moduleName);
-
-                        oldModuleMetadata.FilterCmdlets(cmdletFilter);
-                        newModuleMetadata.FilterCmdlets(cmdletFilter);
-
-                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                        foreach (var cmdlet in oldModuleMetadata.Cmdlets)
-                        {
-                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
-                        }
-
-                        foreach (var cmdlet in newModuleMetadata.Cmdlets)
-                        {
-                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
-                        }
-
-                        issueLogger.WriteMessage(output + Environment.NewLine);
-                    }
-
-                    RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
   
                 }
             }
@@ -202,7 +172,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         public AnalysisReport GetAnalysisReport()
         {
             var analysisReport = new AnalysisReport();
-            var reportLog = Logger.GetReportLogger(BreakingChangeIssueReportLoggerName);
+            var reportLog = Logger.GetReportLogger(UXMetadataIssueReportLoggerName);
             if (!reportLog.Records.Any()) return analysisReport;
 
             foreach (var rec in reportLog.Records)
@@ -217,10 +187,10 @@ namespace StaticAnalysis.UXMetadataAnalyzer
     public static class LogExtensions
     {
         public static void LogBreakingChangeIssue(
-            this ReportLogger<BreakingChangeIssue> issueLogger, CmdletMetadata cmdlet,
+            this ReportLogger<UXMetadataIssue> issueLogger, CmdletMetadata cmdlet,
             string description, string remediation, int severity, int problemId)
         {
-            issueLogger.LogRecord(new BreakingChangeIssue
+            issueLogger.LogRecord(new UXMetadataIssue
             {
                 ClassName = cmdlet.ClassName,
                 Target = cmdlet.Name,

@@ -43,6 +43,9 @@ Param(
     [Switch]
     $StaticAnalysisHelp,
 
+    [Switch]
+    $StaticAnalysisUX,
+
     [String]
     $RepoArtifacts='artifacts',
 
@@ -310,6 +313,7 @@ If ($StaticAnalysisUX)
     If ("" -Ne $UXModuleList)
     {
         Write-Host "Running static analysis for UX metadata..."
+        dotnet publish .\tools\StaticAnalysis\StaticAnalysis.Netcore.csproj -c Debug
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
     }
     Return
